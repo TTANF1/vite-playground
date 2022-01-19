@@ -1,0 +1,33 @@
+{
+  "name": "vite-playground",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "jest"
+  },
+  "dependencies": {
+    "element-plus": "^1.0.2-beta.70",
+    "pinia": "^2.0.0",
+    "rxjs": "^7.4.0",
+    "vue": "3.2.11",
+    "xstate": "^4.26.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@types/node": "^16.11.7",
+    "@vitejs/plugin-vue": "^1.1.5",
+    "@vue/compiler-sfc": "^3.0.5",
+    "autoprefixer": "^10.3.1",
+    "babel-jest": "^27.4.5",
+    "jest": "^27.4.5",
+    "postcss": "^8.3.6",
+    "sass": "^1.43.4",
+    "tailwindcss": "^2.2.7",
+    "typescript": "^4.3.5",
+    "vite": "^2.4.4",
+    "vite-plugin-style-import": "^1.1.1"
+  }
+}

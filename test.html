@@ -1,0 +1,15 @@
+<script src="http://unpkg.com/vue@next"></script>
+
+<script>
+  const { ref, watchEffect } = Vue;
+  const count = ref(1);
+  const flag = true;
+
+  watchEffect(() => {
+    if (flag) {
+      console.log(count.value);
+    } else {
+      console.log('false...');
+    }
+  });
+</script>

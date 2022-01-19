@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .a {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <span class="a">abc</span>
+    <span class="a">中文</span>
+  </body>
+  <script>
+    (() => {
+      /* var restoreArray = function (adjacentPairs) {
+        let nums = [];
+        adjacentPairs.forEach((item, index) => {
+          debugger;
+          if (index === 0) {
+            nums = item.sort((a, b) => a - b);
+            return;
+          }
+
+          const insideNum = item.find(v => nums.includes(v));
+          const otherNum = item.find(v => v !== insideNum);
+          if (insideNum) {
+            if (nums.includes(otherNum)) {
+                nums.splice(nums.indexOf(otherNum), 1)
+            }
+            nums.splice(
+              insideNum < otherNum ? nums.indexOf(insideNum) : nums.indexOf(insideNum) + 1,
+              0,
+              otherNum
+            );
+          } else {
+            nums.push(...item.sort((a, b) => a - b));
+          }
+        });
+
+        return nums;
+      }; */
+
+      var restoreArray = function (adjacentPairs) {
+        const map = new Map();
+        for (const adjacentPair of adjacentPairs) {
+          map.get(adjacentPair[0])
+            ? map.get(adjacentPair[0]).push(adjacentPair[1])
+            : map.set(adjacentPair[0], [adjacentPair[1]]);
+          map.get(adjacentPair[1])
+            ? map.get(adjacentPair[1]).push(adjacentPair[0])
+            : map.set(adjacentPair[1], [adjacentPair[0]]);
+        }
+
+        const n = adjacentPairs.length + 1;
+        const ret = new Array(n).fill(0);
+        for (const [e, adj] of map.entries()) {
+          if (adj.length === 1) {
+            ret[0] = e;
+            break;
+          }
+        }
+
+        ret[1] = map.get(ret[0])[0];
+        for (let i = 2; i < n; i++) {
+          const adj = map.get(ret[i - 1]);
+          ret[i] = ret[i - 2] == adj[0] ? adj[1] : adj[0];
+        }
+        return ret;
+      };
+
+      restoreArray([
+        [4, -10],
+        [-1, 3],
+        [4, -3],
+        [-3, 3],
+      ]);
+    })();
+  </script>
+</html>

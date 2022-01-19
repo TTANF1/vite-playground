@@ -1,0 +1,35 @@
+<script src="http://unpkg.com/vue@next"></script>
+
+<script>
+  const { reactive, watchEffect } = Vue;
+
+  const state = reactive({
+    count: 0,
+  });
+
+  watchEffect(
+    () => {
+      // debugger;
+      console.log(state.count);
+    },
+    {
+      onTrack(e) {
+        // 可以通过 e 知道 watchEffect 跟踪了 state.count
+        // 以及它的触发方式 state.count（get）
+        debugger;
+      },
+      onTrigger(e) {
+        // 当 state.count 发生了改变时触发 例 state.count++
+        // 你可以知道为什么 watchEffect 会被触发
+        debugger;
+      },
+    }
+  );
+
+  const app = {
+    setup() {
+      onRenderTracked((e) => {});
+      onRenderTriggered((e) => {});
+    },
+  };
+</script>
